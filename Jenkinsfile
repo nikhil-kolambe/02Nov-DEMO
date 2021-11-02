@@ -5,6 +5,7 @@ pipeline {
             steps{
                sh "docker build -t nikhilkolambe/my-redis ."
                  }
+        
         }
         stage('Push'){
             steps{
@@ -14,5 +15,11 @@ pipeline {
                 sh "docker push nikhilkolambe/my-redis"
             }
         }
+        stage('Kube') {
+            steps{
+                sh "kubectl get pods"
+            }
+        }
+        
     }
 }
